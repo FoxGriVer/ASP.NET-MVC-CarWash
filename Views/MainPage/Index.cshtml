@@ -1,0 +1,90 @@
+﻿@{
+    ViewBag.Title = "Main page";
+}
+
+<div class="containerGreeting">
+    <div class="blockGreetingText">        
+        <div class="descriptionWelcom text-center">
+            <h3 class="greeting">Добро пожаловать!</h3>
+            <h2 class="carWashName">Автомойка Fast & Shine</h2>
+        </div>
+        <div class="descriptionText text-center">
+            <p>
+                Компния «Fast & Shine» специализируется на мойке автомобилей в Москве.
+                На нашей автомойке также можно произвести полировку кузова, химчистку салона и другие
+                работы. Большое значение имеет использование нами современной техники, лучших чистящих
+                средств и новейших технологий. При желании клиент может заказать комплексное обслуживание машины.
+            </p>
+            <p>
+                Наша автомойка берется за обслуживание автомобилей как частных, так и корпоративных клиентов. Что касается
+                стоимости наших услуг, то она демонстрирует оптимальный баланс между ценой и качеством.
+            </p>
+        </div>        
+    </div>    
+    <div class="blockIcons row text-center">        
+        <div class="col-md-3">
+            <img src="~/Content/icons/контакты.png" class="icons" />
+            <h3>Контакты:</h3>
+            <div class="iconTextBlue">                
+                <p>+7-913-887-3312</p>
+                <p>+7-959-153-3511</p>
+                <p>fastandshine@gmail.com</p>  
+            </div>
+        </div>
+        <div class="col-md-3">
+            <img src="~/Content/icons/время.png" class="icons" />
+            <h3>Время работы:</h3>
+            <div class="iconTextBlue">
+                <p>Ежедневно с 8:00 до 22:00</p>                
+            </div>
+        </div>
+        <div class="col-md-3">
+            <img src="~/Content/icons/координаты.png" class="icons" />
+            <h3>Адрес:</h3>
+            <div class="iconTextBlue">
+                <p>Томск, ул. Герцена, 68А</p>
+            </div>           
+        </div>
+        <div class="col-md-3">
+            <img src="~/Content/icons/запись.png" class="icons" />
+            <h3>Записаться на мойку:</h3>
+            @if (User.Identity.IsAuthenticated)
+            {
+                using (Html.BeginForm("CreateAuthenticatedRecord", "Record", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+                {
+                    <input type="submit" value="Создать запись" class="createRecordBtn btn btn-primary" />
+                }
+            }
+            else
+            {
+                using (Html.BeginForm("CreateNonAuthenticatedRecord", "Record", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+                {
+                    <input type="submit" value="Создать запись" class="createRecordBtn btn btn-primary" />
+                }
+            }            
+        </div>
+    </div>
+        <div id="map" style="width:100%;height:300px;"></div>
+</div>
+
+
+<script type="text/javascript">
+    ymaps.ready(init);
+    var myMap, myPlacemark;
+
+    function init() {
+        myMap = new ymaps.Map("map", {
+            center: [56.473909, 84.984559],
+            zoom: 16
+        });
+
+        myPlacemark = new ymaps.Placemark([56.473963, 84.984563], {
+            hintContent: 'Автомойка',
+            balloonContent: 'Автомойка'
+        });
+
+        myMap.geoObjects.add(myPlacemark);
+    }    
+</script>
+
+

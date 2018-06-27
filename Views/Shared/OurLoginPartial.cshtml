@@ -1,0 +1,30 @@
+﻿@using Microsoft.AspNet.Identity
+
+@if (Request.IsAuthenticated)
+{
+    <div class="col-md-offset-5">
+        <ul class="nav navbar-nav">
+            <li class="nav-item">@Html.ActionLink("Главная страница", "Index", "MainPage", null, new { @class = "ourA" })</li>
+            <li class="nav-item">@Html.ActionLink("Прайс лист", "Index", "PriceList", null, new { @class = "ourA" })</li>
+            <li class="nav-item"><a class="ourA">Галерея</a></li>
+                
+            <li class="nav-item">
+                @Html.ActionLink("   " + User.Identity.GetUserName(), "ManageUser", "Manage", null, new { @class = "ourA" })
+            </li>
+            <li class="nav-item">@Html.ActionLink("Выйти", "LogOff", "Account", null, new { @class = "ourA" })</li>            
+        </ul>
+    </div>
+}
+else
+{
+    <div class="col-md-offset-5">
+        <ul class="nav navbar-nav">
+            <li class="nav-item">@Html.ActionLink("Главная страница", "Index", "MainPage", null, new { @class = "ourA" })</li>
+            <li class="nav-item">@Html.ActionLink("Прайс лист", "Index", "PriceList", null, new { @class = "ourA" })</li>
+            <li class="nav-item">@Html.ActionLink("Галерея", "Index", "Gallery", null, new { @class = "ourA" })</li>
+            <li class="nav-item">@Html.ActionLink("Личный кабинет", "Login", "Account", null, new { @class = "ourA" })</li>
+        </ul>
+    </div>
+}
+
+

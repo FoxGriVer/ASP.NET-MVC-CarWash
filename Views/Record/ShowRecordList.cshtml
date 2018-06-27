@@ -1,0 +1,36 @@
+﻿@model CarWash.Models.RecordListViewModel
+
+<div class="RecordListContainer col-md-offset-2">
+    <h1>Информация по записи</h1>
+    <div class="informContainer">
+        <h2>Автомобиль</h2>
+        <hr class="customLine" />
+        <h3 class="in">@Model.CurrentCar.Mark @Model.CurrentCar.Model</h3>
+    </div>
+    <div class="informContainer">
+        <h2>Приоритетный бокс</h2>
+        <hr class="customLine" />
+        <h3 class="in">@Model.PriorityBox.Description</h3>
+    </div>
+    <div class="informContainer">
+        <h2>Приоритетный автомойщик</h2>
+        <hr class="customLine" />
+        <h3 class="in">@Model.PriorityCarWasher.Surname @Model.PriorityCarWasher.Name @Model.PriorityCarWasher.Patronymic</h3>
+    </div>
+    <div class="informContainer">
+        <h2>Дата</h2>
+        <hr class="customLine" />
+        <h3 class="in">@Model.DateTime</h3>
+    </div>
+    @*@Html.Action("ShowRecordListPartial", new { _recordGuid = Model.RecordGuid });*@
+    @using (Html.BeginForm("AddServicesToRecord", "Record", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.TextBoxFor(m => m.RecordGuid, new { @class = "form-control", type = "hidden", Value = Model.RecordGuid })
+        @Html.TextBoxFor(m => m.PriorityBox.BoxId, new { @class = "form-control", type = "hidden", Value = Model.PriorityBox.BoxId })
+        @Html.TextBoxFor(m => m.PriorityCarWasher.CarWasherId, new { @class = "form-control", type = "hidden", Value = Model.PriorityCarWasher.CarWasherId })
+        @Html.TextBoxFor(m => m.DateTime, new { @class = "form-control", type = "hidden", Value = Model.DateTime })
+        @Html.TextBoxFor(m => m.CurrentCar.Model, new { @class = "form-control", type = "hidden", Value = Model.CurrentCar.Model })
+        <input type="submit" class="btn btn-primary" value="Указать услуги" />
+    }
+</div>
+

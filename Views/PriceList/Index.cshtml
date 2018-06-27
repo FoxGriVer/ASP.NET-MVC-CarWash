@@ -1,0 +1,40 @@
+﻿@model IEnumerable<CarWash.Models.Services>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="containerPriceList">
+    <div class="blockDescription text-center">
+        <img src="~/Content/icons/кошелёк.png" class="icons" />
+        <h1>Цены на услуги Автомоечного комплекса «Fast & Shine»</h1>        
+    </div>
+    <div class="blockTabePrice">
+        <div class="col-md-12">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td>Перечень услуг</td>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                    </tr>                 
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.CodeService</td>
+                            <td>@item.Description</td>
+                            <td>@Html.Action("ConnectServicesAndCategories", new { code = item.CodeService, category = 1})</td>
+                            <td>@Html.Action("ConnectServicesAndCategories", new { code = item.CodeService, category = 2 })</td>
+                            <td>@Html.Action("ConnectServicesAndCategories", new { code = item.CodeService, category = 3 })</td>
+                            <td>@Html.Action("ConnectServicesAndCategories", new { code = item.CodeService, category = 4 })</td>
+                        </tr>
+                    }                                      
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

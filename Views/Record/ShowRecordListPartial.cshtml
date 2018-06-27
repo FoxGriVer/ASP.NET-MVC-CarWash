@@ -1,0 +1,17 @@
+﻿@model List<CarWash.Models.ServicesByCategorySet>
+
+<div class="ListOfServices">
+    <h1>Список услуг</h1>
+    @{
+        var sum = 0;
+        foreach (var item in Model)
+        {
+            <hr class="customLine" />
+            <h4>Наименование услуги: @Html.Action("ConnectServiceAndCategory", new { _codeService = item.ServicesCodeService })</h4>
+            <h4>Цена : @item.Price</h4>
+            sum += item.Price;
+        }
+        <h3>Итого : @sum</h3>
+    }
+    
+</div>

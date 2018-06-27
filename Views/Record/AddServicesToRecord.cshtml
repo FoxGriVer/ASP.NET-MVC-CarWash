@@ -1,0 +1,29 @@
+﻿@model CarWash.Models.RecordListViewModel
+
+<div class="addServiceBlock">
+    <div class="col-lg-offset-4">
+        @using (Html.BeginForm("RefreshServicesToRecord", "Record", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.TextBoxFor(m => m.RecordGuid, new { @class = "form-control", type = "hidden", Value = Model.RecordGuid })
+            @Html.TextBoxFor(m => m.PriorityBox.BoxId, new { @class = "form-control", type = "hidden", Value = Model.PriorityBox.BoxId })
+            @Html.TextBoxFor(m => m.PriorityCarWasher.CarWasherId, new { @class = "form-control", type = "hidden", Value = Model.PriorityCarWasher.CarWasherId })
+            @Html.TextBoxFor(m => m.DateTime, new { @class = "form-control", type = "hidden", Value = Model.DateTime })
+            @Html.TextBoxFor(m => m.CurrentCar.Model, new { @class = "form-control", type = "hidden", Value = Model.CurrentCar.Model })
+
+            @Html.AntiForgeryToken()
+            <hr />
+            <div class="form-group">
+                @Html.Label("Выеберете услугу :", new { @class = "col-md-2 control-label listInRecord labelAddRecord" })
+                <div class="dropDownList ">
+                    @Html.DropDownListFor(m => m.PickedService.CodeService, new SelectList(Model.ListOfServices, "CodeService", "Description"), "Услуги")
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" class="btn btn-primary" value="Добавить услугу" />
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

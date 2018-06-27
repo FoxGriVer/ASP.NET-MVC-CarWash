@@ -1,0 +1,34 @@
+﻿@model CarWash.Models.CarViewModel
+
+<div class="carInformationContainer col-lg-offset-1">
+@using (Html.BeginForm("CarInformationPartial", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <h2>Добавить автомобиль</h2>
+    <hr class="customLine" />
+    <div class="row">
+        <div class="col-md-3 CarNumberBlock">
+            @Html.Label("Номер автомобиля: ", new { @class = "increaseText" })
+            <div class="usualText">
+                @Html.TextBoxFor(m => m.ClientsCarNumber, new { @class = "form-control" })
+            </div>
+        </div>
+        @*<div class="col-md-3">
+            <h3>Марка автомобиля:</h3>
+            <div class="dropDownList">
+                @Html.DropDownListFor(m => m.CurrentMark, new SelectList(Model.Cars, "Mark", " Mark"), "Марка")
+            </div>
+        </div>*@
+        <div class="col-md-3">
+            <h3>Модель автомобиля:</h3>
+            <div class="dropDownList">
+                @Html.DropDownListFor(m => m.CurrentModel, new SelectList(Model.Cars, "CarId", "Model"), "Модель")
+            </div>
+        </div>
+        <div class="col-md-2 carNumberButton">
+            <div class="">
+                <input type="submit" value="Добавить" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>    
+}
+</div>

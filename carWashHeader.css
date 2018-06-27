@@ -1,0 +1,150 @@
+﻿body {
+    font-size: 1.1em;
+	font-family:"MyriadPro-Regular", arial;
+}
+.row {
+    margin-left: 0px;
+    margin-right: 0px;    
+}
+.ourA {
+    color: #f9f9f9;
+    text-decoration: none;
+    font-size: 2em;
+}
+.carWashHeader {
+    text-align:right;    
+    background-color: #333333;
+    margin-bottom: 2%;
+}
+@font-face{
+	font-family: "MyriadPro-Regular";
+	font-weight: 400;
+	src:url("MyriadPro-Regular.otf");
+}
+.ourA:hover {
+	text-decoration: none;
+	color: #333333;
+	transition: all.6s ease;
+	-webkit-transition: all.6s ease;
+}
+/* БЛОК СТРАНИЦЫ ПРИВЕТСТВИЯ*/
+.blockGreetingText {
+    padding-left: 20%;
+    padding-right: 20%;
+    margin-bottom: 5%;
+    margin-top: 5%;
+}
+.descriptionText {    
+    margin-top: 2%;
+    font-size: 1.6em;
+}
+.blockIcons {
+    margin-bottom: 2%;
+}
+.icons {
+    display: inline-block;
+    max-height: 60px;
+    width: auto;
+}
+.iconTextBlue {
+    color: #2A9CD4;
+    font-size: 1.6em;
+    margin-top: 10px;
+}
+
+.createRecordBtn {
+    font-size: 1.4em;
+}
+
+/* БЛОК СТРАНИЦЫ ПРАЙС-ЛИСТА*/
+
+.blockDescription {
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-bottom: 5%;
+    margin-top: 5%;
+}
+.blockTabePrice {
+    padding-left: 10%;
+    padding-right: 10%;
+    font-size: 1.8em;
+}
+
+/* БЛОК АВТОРИЗАЦИИ */
+
+.blockLogin {
+    padding-left: 20%;
+    padding-right: 20%;
+    font-size: 1.8em;
+    margin-top: 5%;
+}
+.increaseText {
+    font-size: 1em;
+}
+.usualText {
+    font-size: 0.8em;
+}
+
+
+/* Блок личного кабинета */
+.userInformationContainer {
+    padding-right: 30%;
+}
+.customLine{
+    margin-top: 0%;
+    border: 0;
+    border-top: 2px solid #eeeeee;
+}
+
+.informContainer {
+    margin-top: 5%;
+}
+
+/*блок информации о автомобиле*/
+.carInfo {
+    margin-top: 5%;
+}
+
+.carInformationContainer {
+    margin-top: 3%;
+}
+
+.dropDownList {
+    font-size: 1.5em;
+    margin-top: 0%;
+}
+
+.CarNumberBlock {
+    padding-top: 1%;
+}   
+
+.carNumberButton {
+    padding-top: 2%;
+}
+
+/* Recrod block*/
+.listInRecord {
+    margin-right: 1.5%;
+}
+
+
+/* RecordListBlock */
+.RecordListContainer {
+    padding-right: 20%;
+}
+
+.addServiceBlock{
+    padding-right: 20%;
+}
+
+.labelAddRecord{
+    font-size: 1.5em;
+}
+
+.ListOfServices {
+    margin-top: 5%;
+}
+
+.recordBtn {
+    margin-top: 3%:
+}

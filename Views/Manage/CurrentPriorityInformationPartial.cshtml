@@ -1,0 +1,46 @@
+﻿@model CarWash.Models.PriorityInformationViewModel
+
+<div class="CurrentPriorityContainer col-lg-offset-1">    
+        <div class="informContainer">
+            <h2>Информация о приоритетах</h2>
+            @if (Model.PriorityCarWasher != null)
+            {
+                <h3>
+                    @*@Html.Action("ConnectCarAndCarClient", new { CarClientGuid = item.CarCarId })*@
+                    Приоритетный бокс: @Model.PriotityBox.Description
+                    <br />
+                    Приоритетный автомойщик: @Model.PriorityCarWasher.Surname @Model.PriorityCarWasher.Name @Model.PriorityCarWasher.Patronymic
+                </h3>
+            }
+            else
+            {
+                <h3>
+                    @*@Html.Action("ConnectCarAndCarClient", new { CarClientGuid = item.CarCarId })*@
+                    Приоритетный бокс: Не указан
+                    <br />
+                    Приоритетный автомойщик: Не указан
+                </h3>
+            }
+
+            @*@Html.ActionLink("Удалить данный приоритет", "DeleteCar",
+                new { _boxId = ViewBag.PriorityBox }, new { @class = "carItem" })*@
+        </div>    
+
+
+    @*@if (Model.Count() > 0)
+    {
+        <h1>Информация об автомобилях</h1>
+        foreach (var item in Model)
+        {
+            <div class="informContainer">
+                <h3>
+                    @Html.Action("ConnectCarAndCarClient", new { CarClientGuid = item.CarCarId })
+                    <br />
+                    Номер автомобиля: @item.CarNumber
+                </h3>
+                @Html.ActionLink("Удалить автомобиль", "DeleteCar",
+                    new { _carGuid = item.CarCarId }, new { @class = "carItem" })
+            </div>
+        }
+    }*@
+</div>

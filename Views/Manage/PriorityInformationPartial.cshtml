@@ -1,0 +1,28 @@
+﻿@model CarWash.Models.PriorityInformationViewModel
+
+<div class="carInformationContainer col-lg-offset-1">
+    @using (Html.BeginForm("PriorityInformationPartial", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        <h2>Информация о приоритетах</h2>
+        <hr class="customLine" />
+        <div class="row">            
+            <div class="col-md-3">
+                    <h3>Номер бокса:</h3>
+                    <div class="dropDownList">
+                        @Html.DropDownListFor(m => m.PriotityBox.BoxId, new SelectList(Model.Boxes, "BoxId", "Description"), "Название бокса")
+                    </div>
+                </div>
+            <div class="col-md-3">
+                <h3>Автомойщик:</h3>
+                <div class="dropDownList">
+                    @Html.DropDownListFor(m => m.PriorityCarWasher.CarWasherId, new SelectList(Model.CarWashers, "CarWasherId", "Surname"), "Автомойщик")
+                </div>
+            </div>
+            <div class="col-md-2 carNumberButton">
+                <div class="">
+                    <input type="submit" value="Добавить" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "ManageUser";
+}
+
+<div class="containerManage">
+    <div class="userInfo">
+        @Html.Action("UserInformationPartial")        
+        @Html.Action("CurrentPriorityInformationPartial");        
+    </div>
+    <div class="carInfo">
+        @Html.Action("CurrentCarInformationPartial");
+        @Html.Action("CarInformationPartial")   
+    </div>
+    <div class="priorityInfo">
+        @Html.Action("PriorityInformationPartial");
+    </div>
+</div>
+

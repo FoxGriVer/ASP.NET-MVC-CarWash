@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="56ab2a5483994d33bc0984c43560d60c" Name="Diagram1" ZoomLevel="59" >
+        <EntityTypeShape EntityType="CarWashModel.Client" Width="1.5" PointX="4.25" PointY="2.875" />
+        <EntityTypeShape EntityType="CarWashModel.sysdiagrams" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="CarWashModel.Car" Width="1.5" PointX="4.25" PointY="5.25" />
+        <EntityTypeShape EntityType="CarWashModel.CategoryOfCar" Width="1.5" PointX="4.25" PointY="7.875" />
+        <AssociationConnector Association="CarWashModel.CategoryOfCarCar" />
+        <EntityTypeShape EntityType="CarWashModel.Services" Width="1.5" PointX="6.125" PointY="8.125" />
+        <EntityTypeShape EntityType="CarWashModel.Boxes" Width="1.5" PointX="8.75" PointY="2.875" />
+        <EntityTypeShape EntityType="CarWashModel.CarWasher" Width="1.5" PointX="11.75" PointY="2.875" />
+        <EntityTypeShape EntityType="CarWashModel.Order" Width="1.5" PointX="12" PointY="6.375" />
+        <EntityTypeShape EntityType="CarWashModel.WorkSchedule" Width="1.5" PointX="13.875" PointY="2.875" />
+        <AssociationConnector Association="CarWashModel.FK_WorkSchedule_CarWasherSet" />
+        <EntityTypeShape EntityType="CarWashModel.CarClientSet" Width="1.5" PointX="6.5" PointY="4.125" />
+        <AssociationConnector Association="CarWashModel.FK_CarCarClient" />
+        <AssociationConnector Association="CarWashModel.FK_ClientCarClient" />
+        <EntityTypeShape EntityType="CarWashModel.PaymentSet" Width="1.5" PointX="10.125" PointY="6" />
+        <AssociationConnector Association="CarWashModel.FK_OrderPayment" />
+        <EntityTypeShape EntityType="CarWashModel.RecordSet" Width="1.5" PointX="15" PointY="6" />
+        <AssociationConnector Association="CarWashModel.FK_BoxesRecord" />
+        <AssociationConnector Association="CarWashModel.FK_CarClientRecord" />
+        <AssociationConnector Association="CarWashModel.FK_CarWasherRecord" ManuallyRouted="true" >
+          <ConnectorPoint PointX="11.84375" PointY="5.047587890625" />
+          <ConnectorPoint PointX="11.84375" PointY="9.0643929036458317" />
+          <ConnectorPoint PointX="15" PointY="9.0643929036458317" />
+        </AssociationConnector>
+        <AssociationConnector Association="CarWashModel.FK_RecordOrder" />
+        <EntityTypeShape EntityType="CarWashModel.Seasons" Width="1.5" PointX="10.125" PointY="8.375" />
+        <AssociationConnector Association="CarWashModel.FK_RecordSet_Seasons" />
+        <EntityTypeShape EntityType="CarWashModel.ServicesByCategorySet" Width="1.5" PointX="8.375" PointY="7.125" />
+        <AssociationConnector Association="CarWashModel.FK_CategoryOfCarServicesByCategory" />
+        <AssociationConnector Association="CarWashModel.FK_ServicesServicesByCategory" />
+        <AssociationConnector Association="CarWashModel.OrderServicesByCategory" />
+        <AssociationConnector Association="CarWashModel.RecordServicesByCategory" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

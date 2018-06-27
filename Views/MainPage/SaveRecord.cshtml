@@ -1,0 +1,12 @@
+﻿<div class="text-center"></div>
+<div class="col-lg-offset-4">
+    @using (Html.BeginForm("ManageUser", "Manage", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+    {
+        <h2>Запись успешно сохранена</h2>        
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-primary" value="Завершить" />
+            </div>
+        </div>
+    }
+</div>

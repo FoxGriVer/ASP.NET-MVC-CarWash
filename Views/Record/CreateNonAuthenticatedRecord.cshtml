@@ -1,0 +1,60 @@
+﻿@model CarWash.Models.RecordViewModel
+@{
+    ViewBag.Title = "Создание записи";
+}
+<div class="text-center"><h2>@ViewBag.Title.</h2></div>
+<div class="col-lg-offset-4">
+    @using (Html.BeginForm("CreateNonAuthenticatedRecord", "Record", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <hr />        
+        <div class="form-group">
+            @Html.LabelFor(m => m.Name, new { @class = "col-md-2 control-label"})
+            <div class="col-md-10 usualText">
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Surname, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10 usualText">
+                @Html.TextBoxFor(m => m.Surname, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Surname, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Patronymic, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10 usualText">
+                @Html.TextBoxFor(m => m.Patronymic, new { @class = "form-control" })
+            </div>
+        </div>
+        @*<input id="datetime" type="datetime-local">*@
+        <div class="form-group">
+            @Html.LabelFor(m => m.DateRecord, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10 usualText">
+                @Html.TextBoxFor(model => model.DateRecord, new { type = "date", @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.TimeRecord, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10 usualText">
+                @Html.TextBoxFor(model => model.TimeRecord, new { type = "time", @class = "form-control" })
+            </div>
+        </div>
+        @*@Html.Action("CarInformationPartial","Manage")*@
+        @*<div class="form-group">
+            @Html.LabelFor(m => m.DateTimeRecord, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10 ">
+                @Html.TextBoxFor(m => m.DateTimeRecord, new { @value = "ДЕВ", @class = "form-control"})
+                @Html.ValidationMessageFor(m => m.DateTimeRecord, "", new { @class = "text-danger"})
+            </div>
+        </div>*@
+        @*@Html.Action("CurrentPriorityInformationPartial");*@
+        @*@Html.TextBoxFor(x => x.DateTimeRecord, "{0:yyyy-MM-dd}", new { @class = "dateInput", @placeholder = "plz input date" })*@
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-primary" value="Записаться" />
+            </div>
+        </div>
+    }
+</div>

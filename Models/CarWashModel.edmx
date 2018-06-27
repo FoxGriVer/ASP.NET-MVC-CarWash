@@ -1,0 +1,1032 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CarWashModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BoxesSet">
+          <Key>
+            <PropertyRef Name="BoxId" />
+          </Key>
+          <Property Name="BoxId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CarClientSet">
+          <Key>
+            <PropertyRef Name="CarNumber" />
+          </Key>
+          <Property Name="CarNumber" Type="varchar" MaxLength="9" Nullable="false" />
+          <Property Name="ClientClientId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CarCarId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PriorityBox" Type="int" />
+          <Property Name="PriorityCarWasher" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="CarSet">
+          <Key>
+            <PropertyRef Name="CarId" />
+          </Key>
+          <Property Name="CarId" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Mark" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Model" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CategoryOfCarCategoryId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CarWasherSet">
+          <Key>
+            <PropertyRef Name="CarWasherId" />
+          </Key>
+          <Property Name="CarWasherId" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Surname" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Patronymic" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="CategoryOfCarSet">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClientSet">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Surname" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Patronymic" Type="nvarchar(max)" />
+          <Property Name="PhoneNumer" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderServicesByCategory">
+          <Key>
+            <PropertyRef Name="Order_OrderId" />
+            <PropertyRef Name="ServicesByCategory_ServiceId" />
+          </Key>
+          <Property Name="Order_OrderId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ServicesByCategory_ServiceId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderSet">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RecordRecordId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PaymentSet">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DataTime" Type="smalldatetime" Nullable="false" />
+          <Property Name="OrderOrderId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RecordServicesByCategory">
+          <Key>
+            <PropertyRef Name="Order_OrderId" />
+            <PropertyRef Name="ServicesByCategory_ServiceId" />
+          </Key>
+          <Property Name="Order_OrderId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ServicesByCategory_ServiceId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RecordSet">
+          <Key>
+            <PropertyRef Name="RecordId" />
+          </Key>
+          <Property Name="RecordId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DateTime" Type="smalldatetime" Nullable="false" />
+          <Property Name="CarWasherCarWasherId" Type="uniqueidentifier" />
+          <Property Name="BoxesBoxId" Type="int" />
+          <Property Name="CarClientCarNumber" Type="varchar" MaxLength="9" Nullable="false" />
+          <Property Name="PriorityWasher" Type="varchar(max)" />
+          <Property Name="PriorityBox" Type="int" />
+          <Property Name="NumberOfSeason" Type="int" />
+        </EntityType>
+        <EntityType Name="Seasons">
+          <Key>
+            <PropertyRef Name="NumberOfMount" />
+          </Key>
+          <Property Name="NumberOfMount" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Season" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ServicesByCategorySet">
+          <Key>
+            <PropertyRef Name="ServiceId" />
+          </Key>
+          <Property Name="ServiceId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Price" Type="int" Nullable="false" />
+          <Property Name="Duration" Type="int" Nullable="false" />
+          <Property Name="CategoryOfCarCategoryId" Type="int" Nullable="false" />
+          <Property Name="ServicesCodeService" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ServicesSet">
+          <Key>
+            <PropertyRef Name="CodeService" />
+          </Key>
+          <Property Name="CodeService" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="WorkSchedule">
+          <Key>
+            <PropertyRef Name="CarWasherId" />
+            <PropertyRef Name="Year" />
+            <PropertyRef Name="Month" />
+          </Key>
+          <Property Name="CarWasherId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Year" Type="int" Nullable="false" />
+          <Property Name="Month" Type="int" Nullable="false" />
+          <Property Name="NumberOfHours" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_BoxesRecord">
+          <End Role="BoxesSet" Type="Self.BoxesSet" Multiplicity="0..1" />
+          <End Role="RecordSet" Type="Self.RecordSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BoxesSet">
+              <PropertyRef Name="BoxId" />
+            </Principal>
+            <Dependent Role="RecordSet">
+              <PropertyRef Name="BoxesBoxId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CarCarClient">
+          <End Role="CarSet" Type="Self.CarSet" Multiplicity="1" />
+          <End Role="CarClientSet" Type="Self.CarClientSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarSet">
+              <PropertyRef Name="CarId" />
+            </Principal>
+            <Dependent Role="CarClientSet">
+              <PropertyRef Name="CarCarId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CarClientRecord">
+          <End Role="CarClientSet" Type="Self.CarClientSet" Multiplicity="1" />
+          <End Role="RecordSet" Type="Self.RecordSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarClientSet">
+              <PropertyRef Name="CarNumber" />
+            </Principal>
+            <Dependent Role="RecordSet">
+              <PropertyRef Name="CarClientCarNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CarWasherRecord">
+          <End Role="CarWasherSet" Type="Self.CarWasherSet" Multiplicity="0..1" />
+          <End Role="RecordSet" Type="Self.RecordSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarWasherSet">
+              <PropertyRef Name="CarWasherId" />
+            </Principal>
+            <Dependent Role="RecordSet">
+              <PropertyRef Name="CarWasherCarWasherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoryOfCarCar">
+          <End Role="CategoryOfCarSet" Type="Self.CategoryOfCarSet" Multiplicity="1" />
+          <End Role="CarSet" Type="Self.CarSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryOfCarSet">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="CarSet">
+              <PropertyRef Name="CategoryOfCarCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoryOfCarServicesByCategory">
+          <End Role="CategoryOfCarSet" Type="Self.CategoryOfCarSet" Multiplicity="1" />
+          <End Role="ServicesByCategorySet" Type="Self.ServicesByCategorySet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryOfCarSet">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="ServicesByCategorySet">
+              <PropertyRef Name="CategoryOfCarCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientCarClient">
+          <End Role="ClientSet" Type="Self.ClientSet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CarClientSet" Type="Self.CarClientSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientSet">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="CarClientSet">
+              <PropertyRef Name="ClientClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderPayment">
+          <End Role="OrderSet" Type="Self.OrderSet" Multiplicity="1" />
+          <End Role="PaymentSet" Type="Self.PaymentSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderSet">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="PaymentSet">
+              <PropertyRef Name="OrderOrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderServicesByCategory_Order">
+          <End Role="OrderSet" Type="Self.OrderSet" Multiplicity="1" />
+          <End Role="OrderServicesByCategory" Type="Self.OrderServicesByCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderSet">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="OrderServicesByCategory">
+              <PropertyRef Name="Order_OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderServicesByCategory_ServicesByCategory">
+          <End Role="ServicesByCategorySet" Type="Self.ServicesByCategorySet" Multiplicity="1" />
+          <End Role="OrderServicesByCategory" Type="Self.OrderServicesByCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServicesByCategorySet">
+              <PropertyRef Name="ServiceId" />
+            </Principal>
+            <Dependent Role="OrderServicesByCategory">
+              <PropertyRef Name="ServicesByCategory_ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RecordOrder">
+          <End Role="RecordSet" Type="Self.RecordSet" Multiplicity="1" />
+          <End Role="OrderSet" Type="Self.OrderSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecordSet">
+              <PropertyRef Name="RecordId" />
+            </Principal>
+            <Dependent Role="OrderSet">
+              <PropertyRef Name="RecordRecordId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RecordServicesByCategory_OrderSet">
+          <End Role="OrderSet" Type="Self.OrderSet" Multiplicity="1" />
+          <End Role="RecordServicesByCategory" Type="Self.RecordServicesByCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderSet">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="RecordServicesByCategory">
+              <PropertyRef Name="Order_OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RecordServicesByCategory_ServicesByCategory">
+          <End Role="ServicesByCategorySet" Type="Self.ServicesByCategorySet" Multiplicity="1" />
+          <End Role="RecordServicesByCategory" Type="Self.RecordServicesByCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServicesByCategorySet">
+              <PropertyRef Name="ServiceId" />
+            </Principal>
+            <Dependent Role="RecordServicesByCategory">
+              <PropertyRef Name="ServicesByCategory_ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RecordSet_Seasons">
+          <End Role="Seasons" Type="Self.Seasons" Multiplicity="0..1" />
+          <End Role="RecordSet" Type="Self.RecordSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seasons">
+              <PropertyRef Name="NumberOfMount" />
+            </Principal>
+            <Dependent Role="RecordSet">
+              <PropertyRef Name="NumberOfSeason" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServicesServicesByCategory">
+          <End Role="ServicesSet" Type="Self.ServicesSet" Multiplicity="1" />
+          <End Role="ServicesByCategorySet" Type="Self.ServicesByCategorySet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServicesSet">
+              <PropertyRef Name="CodeService" />
+            </Principal>
+            <Dependent Role="ServicesByCategorySet">
+              <PropertyRef Name="ServicesCodeService" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkSchedule_CarWasherSet">
+          <End Role="CarWasherSet" Type="Self.CarWasherSet" Multiplicity="1" />
+          <End Role="WorkSchedule" Type="Self.WorkSchedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarWasherSet">
+              <PropertyRef Name="CarWasherId" />
+            </Principal>
+            <Dependent Role="WorkSchedule">
+              <PropertyRef Name="CarWasherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CarWashModelStoreContainer">
+          <EntitySet Name="BoxesSet" EntityType="Self.BoxesSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CarClientSet" EntityType="Self.CarClientSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CarSet" EntityType="Self.CarSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CarWasherSet" EntityType="Self.CarWasherSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CategoryOfCarSet" EntityType="Self.CategoryOfCarSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientSet" EntityType="Self.ClientSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderServicesByCategory" EntityType="Self.OrderServicesByCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderSet" EntityType="Self.OrderSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentSet" EntityType="Self.PaymentSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RecordServicesByCategory" EntityType="Self.RecordServicesByCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RecordSet" EntityType="Self.RecordSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Seasons" EntityType="Self.Seasons" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServicesByCategorySet" EntityType="Self.ServicesByCategorySet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServicesSet" EntityType="Self.ServicesSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkSchedule" EntityType="Self.WorkSchedule" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BoxesRecord" Association="Self.FK_BoxesRecord">
+            <End Role="BoxesSet" EntitySet="BoxesSet" />
+            <End Role="RecordSet" EntitySet="RecordSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CarCarClient" Association="Self.FK_CarCarClient">
+            <End Role="CarSet" EntitySet="CarSet" />
+            <End Role="CarClientSet" EntitySet="CarClientSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CarClientRecord" Association="Self.FK_CarClientRecord">
+            <End Role="CarClientSet" EntitySet="CarClientSet" />
+            <End Role="RecordSet" EntitySet="RecordSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CarWasherRecord" Association="Self.FK_CarWasherRecord">
+            <End Role="CarWasherSet" EntitySet="CarWasherSet" />
+            <End Role="RecordSet" EntitySet="RecordSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoryOfCarCar" Association="Self.FK_CategoryOfCarCar">
+            <End Role="CategoryOfCarSet" EntitySet="CategoryOfCarSet" />
+            <End Role="CarSet" EntitySet="CarSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoryOfCarServicesByCategory" Association="Self.FK_CategoryOfCarServicesByCategory">
+            <End Role="CategoryOfCarSet" EntitySet="CategoryOfCarSet" />
+            <End Role="ServicesByCategorySet" EntitySet="ServicesByCategorySet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientCarClient" Association="Self.FK_ClientCarClient">
+            <End Role="ClientSet" EntitySet="ClientSet" />
+            <End Role="CarClientSet" EntitySet="CarClientSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderPayment" Association="Self.FK_OrderPayment">
+            <End Role="OrderSet" EntitySet="OrderSet" />
+            <End Role="PaymentSet" EntitySet="PaymentSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderServicesByCategory_Order" Association="Self.FK_OrderServicesByCategory_Order">
+            <End Role="OrderSet" EntitySet="OrderSet" />
+            <End Role="OrderServicesByCategory" EntitySet="OrderServicesByCategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderServicesByCategory_ServicesByCategory" Association="Self.FK_OrderServicesByCategory_ServicesByCategory">
+            <End Role="ServicesByCategorySet" EntitySet="ServicesByCategorySet" />
+            <End Role="OrderServicesByCategory" EntitySet="OrderServicesByCategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RecordOrder" Association="Self.FK_RecordOrder">
+            <End Role="RecordSet" EntitySet="RecordSet" />
+            <End Role="OrderSet" EntitySet="OrderSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RecordServicesByCategory_OrderSet" Association="Self.FK_RecordServicesByCategory_OrderSet">
+            <End Role="OrderSet" EntitySet="OrderSet" />
+            <End Role="RecordServicesByCategory" EntitySet="RecordServicesByCategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RecordServicesByCategory_ServicesByCategory" Association="Self.FK_RecordServicesByCategory_ServicesByCategory">
+            <End Role="ServicesByCategorySet" EntitySet="ServicesByCategorySet" />
+            <End Role="RecordServicesByCategory" EntitySet="RecordServicesByCategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RecordSet_Seasons" Association="Self.FK_RecordSet_Seasons">
+            <End Role="Seasons" EntitySet="Seasons" />
+            <End Role="RecordSet" EntitySet="RecordSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServicesServicesByCategory" Association="Self.FK_ServicesServicesByCategory">
+            <End Role="ServicesSet" EntitySet="ServicesSet" />
+            <End Role="ServicesByCategorySet" EntitySet="ServicesByCategorySet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkSchedule_CarWasherSet" Association="Self.FK_WorkSchedule_CarWasherSet">
+            <End Role="CarWasherSet" EntitySet="CarWasherSet" />
+            <End Role="WorkSchedule" EntitySet="WorkSchedule" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="CarWashModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="CarWashModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ClientSet" EntityType="CarWashModel.Client" />
+          <EntitySet Name="sysdiagrams" EntityType="CarWashModel.sysdiagrams" />
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(CarWashModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(CarWashModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="CarSet" EntityType="CarWashModel.Car" />
+          <EntitySet Name="CategoryOfCarSet" EntityType="CarWashModel.CategoryOfCar" />
+          <AssociationSet Name="CategoryOfCarCar" Association="CarWashModel.CategoryOfCarCar">
+            <End Role="CategoryOfCar" EntitySet="CategoryOfCarSet" />
+            <End Role="Car" EntitySet="CarSet" />
+          </AssociationSet>
+          <EntitySet Name="ServicesSet" EntityType="CarWashModel.Services" />
+          <EntitySet Name="BoxesSet" EntityType="CarWashModel.Boxes" />
+          <EntitySet Name="CarWasherSet" EntityType="CarWashModel.CarWasher" />
+          <EntitySet Name="OrderSet" EntityType="CarWashModel.Order" />
+          <EntitySet Name="WorkSchedule" EntityType="CarWashModel.WorkSchedule" />
+          <AssociationSet Name="FK_WorkSchedule_CarWasherSet" Association="CarWashModel.FK_WorkSchedule_CarWasherSet">
+            <End Role="CarWasher" EntitySet="CarWasherSet" />
+            <End Role="WorkSchedule" EntitySet="WorkSchedule" />
+          </AssociationSet>
+          <EntitySet Name="CarClientSet" EntityType="CarWashModel.CarClientSet" />
+          <AssociationSet Name="FK_CarCarClient" Association="CarWashModel.FK_CarCarClient">
+            <End Role="Car" EntitySet="CarSet" />
+            <End Role="CarClientSet" EntitySet="CarClientSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientCarClient" Association="CarWashModel.FK_ClientCarClient">
+            <End Role="Client" EntitySet="ClientSet" />
+            <End Role="CarClientSet" EntitySet="CarClientSet" />
+          </AssociationSet>
+          <EntitySet Name="PaymentSet" EntityType="CarWashModel.PaymentSet" />
+          <AssociationSet Name="FK_OrderPayment" Association="CarWashModel.FK_OrderPayment">
+            <End Role="Order" EntitySet="OrderSet" />
+            <End Role="PaymentSet" EntitySet="PaymentSet" />
+          </AssociationSet>
+          <EntitySet Name="RecordSet" EntityType="CarWashModel.RecordSet" />
+          <AssociationSet Name="FK_BoxesRecord" Association="CarWashModel.FK_BoxesRecord">
+            <End Role="Boxes" EntitySet="BoxesSet" />
+            <End Role="RecordSet" EntitySet="RecordSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CarClientRecord" Association="CarWashModel.FK_CarClientRecord">
+            <End Role="CarClientSet" EntitySet="CarClientSet" />
+            <End Role="RecordSet" EntitySet="RecordSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CarWasherRecord" Association="CarWashModel.FK_CarWasherRecord">
+            <End Role="CarWasher" EntitySet="CarWasherSet" />
+            <End Role="RecordSet" EntitySet="RecordSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RecordOrder" Association="CarWashModel.FK_RecordOrder">
+            <End Role="RecordSet" EntitySet="RecordSet" />
+            <End Role="Order" EntitySet="OrderSet" />
+          </AssociationSet>
+          <EntitySet Name="Seasons" EntityType="CarWashModel.Seasons" />
+          <AssociationSet Name="FK_RecordSet_Seasons" Association="CarWashModel.FK_RecordSet_Seasons">
+            <End Role="Seasons" EntitySet="Seasons" />
+            <End Role="RecordSet" EntitySet="RecordSet" />
+          </AssociationSet>
+          <EntitySet Name="ServicesByCategorySet" EntityType="CarWashModel.ServicesByCategorySet" />
+          <AssociationSet Name="FK_CategoryOfCarServicesByCategory" Association="CarWashModel.FK_CategoryOfCarServicesByCategory">
+            <End Role="CategoryOfCar" EntitySet="CategoryOfCarSet" />
+            <End Role="ServicesByCategorySet" EntitySet="ServicesByCategorySet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServicesServicesByCategory" Association="CarWashModel.FK_ServicesServicesByCategory">
+            <End Role="Services" EntitySet="ServicesSet" />
+            <End Role="ServicesByCategorySet" EntitySet="ServicesByCategorySet" />
+          </AssociationSet>
+          <AssociationSet Name="OrderServicesByCategory" Association="CarWashModel.OrderServicesByCategory">
+            <End Role="Order" EntitySet="OrderSet" />
+            <End Role="ServicesByCategorySet" EntitySet="ServicesByCategorySet" />
+          </AssociationSet>
+          <AssociationSet Name="RecordServicesByCategory" Association="CarWashModel.RecordServicesByCategory">
+            <End Role="Order" EntitySet="OrderSet" />
+            <End Role="ServicesByCategorySet" EntitySet="ServicesByCategorySet" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Surname" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Patronymic" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="PhoneNumer" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="CarClientSet" Relationship="CarWashModel.FK_ClientCarClient" FromRole="Client" ToRole="CarClientSet" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="Car">
+          <Key>
+            <PropertyRef Name="CarId" />
+          </Key>
+          <Property Name="CarId" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Mark" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Model" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="CategoryOfCar" Relationship="CarWashModel.CategoryOfCarCar" FromRole="Car" ToRole="CategoryOfCar" />
+          <Property Name="CategoryOfCarCategoryId" Type="Int32" Nullable="false" ConcurrencyMode="None" />
+          <NavigationProperty Name="CarClientSet" Relationship="CarWashModel.FK_CarCarClient" FromRole="Car" ToRole="CarClientSet" />
+        </EntityType>
+        <EntityType Name="CategoryOfCar">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" ConcurrencyMode="None" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Car" Relationship="CarWashModel.CategoryOfCarCar" FromRole="CategoryOfCar" ToRole="Car" />
+          <NavigationProperty Name="ServicesByCategorySet" Relationship="CarWashModel.FK_CategoryOfCarServicesByCategory" FromRole="CategoryOfCar" ToRole="ServicesByCategorySet" />
+        </EntityType>
+        <Association Name="CategoryOfCarCar">
+          <End Type="CarWashModel.CategoryOfCar" Role="CategoryOfCar" Multiplicity="1" />
+          <End Type="CarWashModel.Car" Role="Car" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryOfCar">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Car">
+              <PropertyRef Name="CategoryOfCarCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Services">
+          <Key>
+            <PropertyRef Name="CodeService" />
+          </Key>
+          <Property Name="CodeService" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="ServicesByCategorySet" Relationship="CarWashModel.FK_ServicesServicesByCategory" FromRole="Services" ToRole="ServicesByCategorySet" />
+        </EntityType>
+        <EntityType Name="Boxes">
+          <Key>
+            <PropertyRef Name="BoxId" />
+          </Key>
+          <Property Name="BoxId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="RecordSet" Relationship="CarWashModel.FK_BoxesRecord" FromRole="Boxes" ToRole="RecordSet" />
+        </EntityType>
+        <EntityType Name="CarWasher">
+          <Key>
+            <PropertyRef Name="CarWasherId" />
+          </Key>
+          <Property Name="CarWasherId" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Surname" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Patronymic" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="WorkSchedule" Relationship="CarWashModel.FK_WorkSchedule_CarWasherSet" FromRole="CarWasher" ToRole="WorkSchedule" />
+          <NavigationProperty Name="RecordSet" Relationship="CarWashModel.FK_CarWasherRecord" FromRole="CarWasher" ToRole="RecordSet" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RecordRecordId" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="PaymentSet" Relationship="CarWashModel.FK_OrderPayment" FromRole="Order" ToRole="PaymentSet" />
+          <NavigationProperty Name="RecordSet" Relationship="CarWashModel.FK_RecordOrder" FromRole="Order" ToRole="RecordSet" />
+          <NavigationProperty Name="ServicesByCategorySet" Relationship="CarWashModel.OrderServicesByCategory" FromRole="Order" ToRole="ServicesByCategorySet" />
+          <NavigationProperty Name="ServicesByCategorySet1" Relationship="CarWashModel.RecordServicesByCategory" FromRole="Order" ToRole="ServicesByCategorySet" />
+          </EntityType>
+        <EntityType Name="WorkSchedule">
+          <Key>
+            <PropertyRef Name="CarWasherId" />
+            <PropertyRef Name="Year" />
+            <PropertyRef Name="Month" />
+          </Key>
+          <Property Name="CarWasherId" Type="Guid" Nullable="false" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
+          <Property Name="Month" Type="Int32" Nullable="false" />
+          <Property Name="NumberOfHours" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CarWasherSet" Relationship="CarWashModel.FK_WorkSchedule_CarWasherSet" FromRole="WorkSchedule" ToRole="CarWasher" />
+        </EntityType>
+        <Association Name="FK_WorkSchedule_CarWasherSet">
+          <End Type="CarWashModel.CarWasher" Role="CarWasher" Multiplicity="1" />
+          <End Type="CarWashModel.WorkSchedule" Role="WorkSchedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarWasher">
+              <PropertyRef Name="CarWasherId" />
+            </Principal>
+            <Dependent Role="WorkSchedule">
+              <PropertyRef Name="CarWasherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CarClientSet">
+          <Key>
+            <PropertyRef Name="CarNumber" />
+          </Key>
+          <Property Name="CarNumber" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="ClientClientId" Type="Guid" Nullable="false" />
+          <Property Name="CarCarId" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="CarSet" Relationship="CarWashModel.FK_CarCarClient" FromRole="CarClientSet" ToRole="Car" />
+          <NavigationProperty Name="ClientSet" Relationship="CarWashModel.FK_ClientCarClient" FromRole="CarClientSet" ToRole="Client" />
+          <NavigationProperty Name="RecordSet" Relationship="CarWashModel.FK_CarClientRecord" FromRole="CarClientSet" ToRole="RecordSet" />
+          <Property Name="PriorityBox" Type="Int32" />
+          <Property Name="PriorityCarWasher" Type="Guid" />
+        </EntityType>
+        <Association Name="FK_CarCarClient">
+          <End Type="CarWashModel.Car" Role="Car" Multiplicity="1" />
+          <End Type="CarWashModel.CarClientSet" Role="CarClientSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Car">
+              <PropertyRef Name="CarId" />
+            </Principal>
+            <Dependent Role="CarClientSet">
+              <PropertyRef Name="CarCarId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientCarClient">
+          <End Type="CarWashModel.Client" Role="Client" Multiplicity="1" />
+          <End Type="CarWashModel.CarClientSet" Role="CarClientSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="CarClientSet">
+              <PropertyRef Name="ClientClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PaymentSet">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="Guid" Nullable="false" />
+          <Property Name="DataTime" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="OrderOrderId" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="OrderSet" Relationship="CarWashModel.FK_OrderPayment" FromRole="PaymentSet" ToRole="Order" />
+        </EntityType>
+        <Association Name="FK_OrderPayment">
+          <End Type="CarWashModel.Order" Role="Order" Multiplicity="1" />
+          <End Type="CarWashModel.PaymentSet" Role="PaymentSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="PaymentSet">
+              <PropertyRef Name="OrderOrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="RecordSet">
+          <Key>
+            <PropertyRef Name="RecordId" />
+          </Key>
+          <Property Name="RecordId" Type="Guid" Nullable="false" />
+          <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CarWasherCarWasherId" Type="Guid" />
+          <Property Name="BoxesBoxId" Type="Int32" />
+          <Property Name="CarClientCarNumber" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="PriorityWasher" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PriorityBox" Type="Int32" />
+          <NavigationProperty Name="BoxesSet" Relationship="CarWashModel.FK_BoxesRecord" FromRole="RecordSet" ToRole="Boxes" />
+          <NavigationProperty Name="CarClientSet" Relationship="CarWashModel.FK_CarClientRecord" FromRole="RecordSet" ToRole="CarClientSet" />
+          <NavigationProperty Name="CarWasherSet" Relationship="CarWashModel.FK_CarWasherRecord" FromRole="RecordSet" ToRole="CarWasher" />
+          <NavigationProperty Name="OrderSet" Relationship="CarWashModel.FK_RecordOrder" FromRole="RecordSet" ToRole="Order" />
+          <Property Name="NumberOfSeason" Type="Int32" />
+          <NavigationProperty Name="Seasons" Relationship="CarWashModel.FK_RecordSet_Seasons" FromRole="RecordSet" ToRole="Seasons" />
+        </EntityType>
+        <Association Name="FK_BoxesRecord">
+          <End Type="CarWashModel.Boxes" Role="Boxes" Multiplicity="0..1" />
+          <End Type="CarWashModel.RecordSet" Role="RecordSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Boxes">
+              <PropertyRef Name="BoxId" />
+            </Principal>
+            <Dependent Role="RecordSet">
+              <PropertyRef Name="BoxesBoxId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CarClientRecord">
+          <End Type="CarWashModel.CarClientSet" Role="CarClientSet" Multiplicity="1" />
+          <End Type="CarWashModel.RecordSet" Role="RecordSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarClientSet">
+              <PropertyRef Name="CarNumber" />
+            </Principal>
+            <Dependent Role="RecordSet">
+              <PropertyRef Name="CarClientCarNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CarWasherRecord">
+          <End Type="CarWashModel.CarWasher" Role="CarWasher" Multiplicity="0..1" />
+          <End Type="CarWashModel.RecordSet" Role="RecordSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarWasher">
+              <PropertyRef Name="CarWasherId" />
+            </Principal>
+            <Dependent Role="RecordSet">
+              <PropertyRef Name="CarWasherCarWasherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RecordOrder">
+          <End Type="CarWashModel.RecordSet" Role="RecordSet" Multiplicity="1" />
+          <End Type="CarWashModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecordSet">
+              <PropertyRef Name="RecordId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="RecordRecordId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Seasons">
+          <Key>
+            <PropertyRef Name="NumberOfMount" />
+          </Key>
+          <Property Name="NumberOfMount" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Season" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="RecordSet" Relationship="CarWashModel.FK_RecordSet_Seasons" FromRole="Seasons" ToRole="RecordSet" />
+        </EntityType>
+        <Association Name="FK_RecordSet_Seasons">
+          <End Type="CarWashModel.Seasons" Role="Seasons" Multiplicity="0..1" />
+          <End Type="CarWashModel.RecordSet" Role="RecordSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seasons">
+              <PropertyRef Name="NumberOfMount" />
+            </Principal>
+            <Dependent Role="RecordSet">
+              <PropertyRef Name="NumberOfSeason" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ServicesByCategorySet">
+          <Key>
+            <PropertyRef Name="ServiceId" />
+          </Key>
+          <Property Name="ServiceId" Type="Guid" Nullable="false" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
+          <Property Name="Duration" Type="Int32" Nullable="false" />
+          <Property Name="CategoryOfCarCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="ServicesCodeService" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CategoryOfCarSet" Relationship="CarWashModel.FK_CategoryOfCarServicesByCategory" FromRole="ServicesByCategorySet" ToRole="CategoryOfCar" />
+          <NavigationProperty Name="ServicesSet" Relationship="CarWashModel.FK_ServicesServicesByCategory" FromRole="ServicesByCategorySet" ToRole="Services" />
+          <NavigationProperty Name="OrderSet" Relationship="CarWashModel.OrderServicesByCategory" FromRole="ServicesByCategorySet" ToRole="Order" />
+          <NavigationProperty Name="OrderSet1" Relationship="CarWashModel.RecordServicesByCategory" FromRole="ServicesByCategorySet" ToRole="Order" />
+        </EntityType>
+        <Association Name="FK_CategoryOfCarServicesByCategory">
+          <End Type="CarWashModel.CategoryOfCar" Role="CategoryOfCar" Multiplicity="1" />
+          <End Type="CarWashModel.ServicesByCategorySet" Role="ServicesByCategorySet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryOfCar">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="ServicesByCategorySet">
+              <PropertyRef Name="CategoryOfCarCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServicesServicesByCategory">
+          <End Type="CarWashModel.Services" Role="Services" Multiplicity="1" />
+          <End Type="CarWashModel.ServicesByCategorySet" Role="ServicesByCategorySet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="CodeService" />
+            </Principal>
+            <Dependent Role="ServicesByCategorySet">
+              <PropertyRef Name="ServicesCodeService" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OrderServicesByCategory">
+          <End Type="CarWashModel.Order" Role="Order" Multiplicity="*" />
+          <End Type="CarWashModel.ServicesByCategorySet" Role="ServicesByCategorySet" Multiplicity="*" />
+        </Association>
+        <Association Name="RecordServicesByCategory">
+          <End Type="CarWashModel.Order" Role="Order" Multiplicity="*" />
+          <End Type="CarWashModel.ServicesByCategorySet" Role="ServicesByCategorySet" Multiplicity="*" />
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CarWashModelStoreContainer" CdmEntityContainer="CarWashModelContainer">
+    <EntitySetMapping Name="ClientSet">
+      <EntityTypeMapping TypeName="IsTypeOf(CarWashModel.Client)">
+        <MappingFragment StoreEntitySet="ClientSet">
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+          <ScalarProperty Name="PhoneNumer" ColumnName="PhoneNumer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="IsTypeOf(CarWashModel.sysdiagrams)">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CarSet">
+      <EntityTypeMapping TypeName="IsTypeOf(CarWashModel.Car)">
+        <MappingFragment StoreEntitySet="CarSet">
+          <ScalarProperty Name="CarId" ColumnName="CarId" />
+          <ScalarProperty Name="Mark" ColumnName="Mark" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="CategoryOfCarCategoryId" ColumnName="CategoryOfCarCategoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CategoryOfCarSet">
+      <EntityTypeMapping TypeName="IsTypeOf(CarWashModel.CategoryOfCar)">
+        <MappingFragment StoreEntitySet="CategoryOfCarSet">
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServicesSet">
+      <EntityTypeMapping TypeName="IsTypeOf(CarWashModel.Services)">
+        <MappingFragment StoreEntitySet="ServicesSet">
+          <ScalarProperty Name="CodeService" ColumnName="CodeService" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BoxesSet">
+      <EntityTypeMapping TypeName="IsTypeOf(CarWashModel.Boxes)">
+        <MappingFragment StoreEntitySet="BoxesSet">
+          <ScalarProperty Name="BoxId" ColumnName="BoxId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CarWasherSet">
+      <EntityTypeMapping TypeName="IsTypeOf(CarWashModel.CarWasher)">
+        <MappingFragment StoreEntitySet="CarWasherSet">
+          <ScalarProperty Name="CarWasherId" ColumnName="CarWasherId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderSet">
+      <EntityTypeMapping TypeName="IsTypeOf(CarWashModel.Order)">
+        <MappingFragment StoreEntitySet="OrderSet">
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="RecordRecordId" ColumnName="RecordRecordId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+          <EntitySetMapping Name="WorkSchedule">
+            <EntityTypeMapping TypeName="CarWashModel.WorkSchedule">
+              <MappingFragment StoreEntitySet="WorkSchedule">
+                <ScalarProperty Name="NumberOfHours" ColumnName="NumberOfHours" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="CarWasherId" ColumnName="CarWasherId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CarClientSet">
+            <EntityTypeMapping TypeName="CarWashModel.CarClientSet">
+              <MappingFragment StoreEntitySet="CarClientSet">
+                <ScalarProperty Name="PriorityCarWasher" ColumnName="PriorityCarWasher" />
+                <ScalarProperty Name="PriorityBox" ColumnName="PriorityBox" />
+                <ScalarProperty Name="CarCarId" ColumnName="CarCarId" />
+                <ScalarProperty Name="ClientClientId" ColumnName="ClientClientId" />
+                <ScalarProperty Name="CarNumber" ColumnName="CarNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentSet">
+            <EntityTypeMapping TypeName="CarWashModel.PaymentSet">
+              <MappingFragment StoreEntitySet="PaymentSet">
+                <ScalarProperty Name="OrderOrderId" ColumnName="OrderOrderId" />
+                <ScalarProperty Name="DataTime" ColumnName="DataTime" />
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RecordSet">
+            <EntityTypeMapping TypeName="CarWashModel.RecordSet">
+              <MappingFragment StoreEntitySet="RecordSet">
+                <ScalarProperty Name="NumberOfSeason" ColumnName="NumberOfSeason" />
+                <ScalarProperty Name="PriorityBox" ColumnName="PriorityBox" />
+                <ScalarProperty Name="PriorityWasher" ColumnName="PriorityWasher" />
+                <ScalarProperty Name="CarClientCarNumber" ColumnName="CarClientCarNumber" />
+                <ScalarProperty Name="BoxesBoxId" ColumnName="BoxesBoxId" />
+                <ScalarProperty Name="CarWasherCarWasherId" ColumnName="CarWasherCarWasherId" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="RecordId" ColumnName="RecordId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Seasons">
+            <EntityTypeMapping TypeName="CarWashModel.Seasons">
+              <MappingFragment StoreEntitySet="Seasons">
+                <ScalarProperty Name="Season" ColumnName="Season" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="NumberOfMount" ColumnName="NumberOfMount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServicesByCategorySet">
+            <EntityTypeMapping TypeName="CarWashModel.ServicesByCategorySet">
+              <MappingFragment StoreEntitySet="ServicesByCategorySet">
+                <ScalarProperty Name="ServicesCodeService" ColumnName="ServicesCodeService" />
+                <ScalarProperty Name="CategoryOfCarCategoryId" ColumnName="CategoryOfCarCategoryId" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="OrderServicesByCategory" TypeName="CarWashModel.OrderServicesByCategory" StoreEntitySet="OrderServicesByCategory">
+            <EndProperty Name="ServicesByCategorySet">
+              <ScalarProperty Name="ServiceId" ColumnName="ServicesByCategory_ServiceId" />
+            </EndProperty>
+            <EndProperty Name="Order">
+              <ScalarProperty Name="OrderId" ColumnName="Order_OrderId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="RecordServicesByCategory" TypeName="CarWashModel.RecordServicesByCategory" StoreEntitySet="RecordServicesByCategory">
+            <EndProperty Name="ServicesByCategorySet">
+              <ScalarProperty Name="ServiceId" ColumnName="ServicesByCategory_ServiceId" />
+            </EndProperty>
+            <EndProperty Name="Order">
+              <ScalarProperty Name="OrderId" ColumnName="Order_OrderId" />
+            </EndProperty>
+          </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
